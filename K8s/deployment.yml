@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self-healing
+  labels:
+    app: self-healing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: self-healing
+  template:
+    metadata:
+      labels:
+        app: self-healing
+    spec:
+      imagePullSecrets: []
+      containers:
+        - name: self-healing
+          image: eclipseaerios/self-healing-app:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"

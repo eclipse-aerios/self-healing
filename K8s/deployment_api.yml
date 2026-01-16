@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: self-healing-api
+  labels:
+    app: self-healing-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: self-healing-api
+  template:
+    metadata:
+      labels:
+        app: self-healing-api
+    spec:
+      imagePullSecrets: []
+      securityContext: {}
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+      containers:
+        - name: self-healing-api
+          image: eclipseaerios/self-healing-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8500
+              hostPort: 8500
+              protocol: TCP
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"

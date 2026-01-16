@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: self-healing-api
+spec:
+  selector:
+    app: self-healing-api
+  ports:
+    - protocol: TCP
+      port: 80 # The port exposed by the service
+      targetPort: 8000 # The port on the container
+  type: ClusterIP # Change to LoadBalancer if you want to expose it externally
+  # type: NodePort # Testing for development

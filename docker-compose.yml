@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  self-healing:
+    build: ./src/self_healing_app
+    container_name: self-healing-app
+    restart: always
+
+  api:
+    build: ./src/self_healing_api
+    container_name: self-healing-api
+    ports:
+      - "8000:8500"
+    restart: always

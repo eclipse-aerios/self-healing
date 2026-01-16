@@ -1,0 +1,5 @@
+uvicorn==0.34.0
+fastapi==0.115.6
+requests==2.32.3
+httpx==0.28.1
+getmac==0.9.5

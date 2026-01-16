@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bash-curl-pod
+  namespace: default
+spec:
+  containers:
+  - name: bash-curl-container
+    image: curlimages/curl:latest
+    command: ["sleep", "infinity"]
+    stdin: true
+    tty: true
